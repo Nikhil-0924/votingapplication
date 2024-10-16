@@ -261,6 +261,7 @@ curl -s $API_ELB_PUBLIC_FQDN/languages | jq .
 curl -s $API_ELB_PUBLIC_FQDN/languages/go | jq .
 curl -s $API_ELB_PUBLIC_FQDN/languages/java | jq .
 curl -s $API_ELB_PUBLIC_FQDN/languages/nodejs | jq .
+```
 
 If everything works fine, go ahead with Frontend setup.
 
@@ -268,10 +269,13 @@ If everything works fine, go ahead with Frontend setup.
 API_ELB_PUBLIC_FQDN=$(kubectl get svc api -ojsonpath="{.status.loadBalancer.ingress[0].hostname}")
 echo API_ELB_PUBLIC_FQDN=$API_ELB_PUBLIC_FQDN
 }
+
+
 Frontend setup
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Create the Frontend Deployment resource. In the terminal run the following command:
+
 ```bash
 kubectl apply -f frontend-deployment.yaml
 ```
@@ -285,6 +289,7 @@ kubectl expose deploy frontend \
 ```
  
 Confirm that the Frontend ELB is ready to recieve HTTP traffic. In the terminal run the following command:
+
 ```bash
 {
 FRONTEND_ELB_PUBLIC_FQDN=$(kubectl get svc frontend -ojsonpath="{.status.loadBalancer.ingress[0].hostname}")
