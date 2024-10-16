@@ -310,7 +310,8 @@ kubectl exec -it mongo-0 -- mongo langdb --eval "db.languages.find().pretty()"
 
 **Application Interface**
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
-![Screenshot 2024-10-16 164338](https://github.com/user-attachments/assets/ab3080c1-8507-4083-aa20-6a7f9cb58b75)
+<img width="593" alt="image" src="https://github.com/user-attachments/assets/2cf3eab2-431b-4300-82bd-cce1f2769cd8">
+
 
 
 **Summary**
