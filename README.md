@@ -1,5 +1,5 @@
 # votingapplication
-This repo is based on the EKS, MongoDB, API, Security and Secrets Management, PersiKubernetes ResourcesstentVolume and PersistentVolumeClaim
+This repo is based on the EKS, MongoDB, API, Security and Secrets Management, Kubernetes ResourcesstentVolume and PersistentVolumeClaim
 
 **Frontend:**
 The frontend of this application is built using React and JavaScript. It provides a responsive and user-friendly interface for casting votes.
