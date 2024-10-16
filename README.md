@@ -307,3 +307,12 @@ Query the MongoDB database directly to observe the updated vote data. In the ter
 ```bash
 kubectl exec -it mongo-0 -- mongo langdb --eval "db.languages.find().pretty()"
 ```
+
+**Application Interface**
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Screenshot 2024-10-16 164338](https://github.com/user-attachments/assets/ab3080c1-8507-4083-aa20-6a7f9cb58b75)
+
+
+**Summary**
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Deployed a cloud-native application on Amazon EKS, ensuring scalability and resilience. The application was accessed via a LoadBalancer's public IP, and your interactions generated data that was stored in a MongoDB ReplicaSet for high availability. You verified that the data was successfully captured and replicated across the MongoDB nodes. This project demonstrated the complete deployment, data persistence, and validation of a cloud-native architecture using EKS and MongoDB.
