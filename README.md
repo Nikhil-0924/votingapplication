@@ -1,4 +1,4 @@
-# votingapplication
+# Voting Application
 This repo is based on the EKS, MongoDB, API, Security and Secrets Management, Kubernetes ResourcesstentVolume and PersistentVolumeClaim
 
 **Frontend:**
@@ -22,6 +22,7 @@ configured with a replica set for data redundancy and high availability.
 **StatefulSet**: For components requiring statefulness, such as the MongoDB replica set, Kubernetes StatefulSets are employed to maintain order and unique identities.
 
 **PersistentVolume and PersistentVolumeClaim**: These Kubernetes resources manage the storage required for the application, ensuring data persistence and scalability.
+
 
 ****Creating and deploying this cloud-native web voting application with Kubernetes offers a valuable learning experience. Here are some key takeaways:**
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
