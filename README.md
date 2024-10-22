@@ -69,7 +69,9 @@ Steps to Deploy
 AWS RESOUCRES
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 1.EKS (cluster-1)
+
 2.Role (MyAamzonEKSclusterRole)
+
    
    {
     "Version": "2012-10-17",
@@ -86,8 +88,9 @@ AWS RESOUCRES
     ]
 }
 
+
   3.ADD-ONS in cluster
-  # --> Amazon EBS CSI Driver
+  --> Amazon EBS CSI Driver
   
   4.Compute in clusters 
   
