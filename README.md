@@ -1,61 +1,72 @@
 # Voting Application
 This repo is based on the EKS, MongoDB, API, Security and Secrets Management, Kubernetes Resources persistentVolume and PersistentVolumeClaim
 
-**Frontend:**
+# Frontend:
 The frontend of this application is built using React and JavaScript. It provides a responsive and user-friendly interface for casting votes.
 
-**Backend and API:** 
+# Backend and API: 
 The backend of this application is powered by Go (Golang). It serves as the API handling user voting requests. MongoDB is used as the database backend, 
 configured with a replica set for data redundancy and high availability.
 
-**Kubernetes Resources**
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Kubernetes Resources
+--------------------------------
+*Namespace* : 
+Kubernetes namespaces are utilized to create isolated environments for different components of the application, ensuring separation and organization.
 
-**Namespace** : Kubernetes namespaces are utilized to create isolated environments for different components of the application, ensuring separation and organization.
+*Secret*   : 
+Kubernetes secrets store sensitive information, such as API keys or credentials, required by the application securely.
 
-**Secret**    : Kubernetes secrets store sensitive information, such as API keys or credentials, required by the application securely.
+*Deployment* :
+Kubernetes deployments define how many instances of the application should run and provide instructions for updates and scaling.
 
-**Deployment** : Kubernetes deployments define how many instances of the application should run and provide instructions for updates and scaling.
+*Service*: 
+Kubernetes services ensure that users can access the application by directing incoming traffic to the appropriate instances.
 
-**Service**: Kubernetes services ensure that users can access the application by directing incoming traffic to the appropriate instances.
+*StatefulSet*: 
+For components requiring statefulness, such as the MongoDB replica set, Kubernetes StatefulSets are employed to maintain order and unique identities.
 
-**StatefulSet**: For components requiring statefulness, such as the MongoDB replica set, Kubernetes StatefulSets are employed to maintain order and unique identities.
+*PersistentVolume and PersistentVolumeClaim* : 
+These Kubernetes resources manage the storage required for the application, ensuring data persistence and scalability.
 
-**PersistentVolume and PersistentVolumeClaim**: These Kubernetes resources manage the storage required for the application, ensuring data persistence and scalability.
 
+# Creating and deploying this cloud-native web voting application with Kubernetes 
+--------------
 
-****Creating and deploying this cloud-native web voting application with Kubernetes offers a valuable learning experience. Here are some key takeaways:**
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Containerization: 
+Gain hands-on experience with containerization technologies like Docker for packaging applications and their dependencies.
 
-**Containerization:** Gain hands-on experience with containerization technologies like Docker for packaging applications and their dependencies.
+# Kubernetes Orchestration:
+Learn how to leverage Kubernetes to efficiently manage, deploy, and scale containerized applications in a production environment.
 
-**Kubernetes Orchestration:** Learn how to leverage Kubernetes to efficiently manage, deploy, and scale containerized applications in a production environment.
+# Microservices Architecture:
+Explore the benefits and challenges of a microservices architecture, where the frontend and backend are decoupled and independently scalable.
 
-**Microservices Architecture:** Explore the benefits and challenges of a microservices architecture, where the frontend and backend are decoupled and independently scalable.
+# Database Replication: 
+Understand how to set up and manage a MongoDB replica set for data redundancy and high availability.
 
-**Database Replication:** Understand how to set up and manage a MongoDB replica set for data redundancy and high availability.
+# Security and Secrets Management: 
+Learn best practices for securing sensitive information using Kubernetes secrets.
 
-**Security and Secrets Management:** Learn best practices for securing sensitive information using Kubernetes secrets.
+# Stateful Applications: 
+Gain insights into the nuances of deploying stateful applications within a container orchestration environment.
 
-**Stateful Applications:** Gain insights into the nuances of deploying stateful applications within a container orchestration environment.
-
-**Stateful : Key Features of StatefulSets**
+# Stateful : Key Features of StatefulSets
  
 1.	Stable, unique network identities:Pods in a StatefulSet get a persistent identity that does not change across rescheduling or scaling.
 2.	Persistent storage: StatefulSets work with PersistentVolumeClaims (PVCs) to provide stable storage across pod restarts.
 3.	Ordered deployment and scaling: Pods are created, updated, and deleted in a sequential order.
 4.	Ordered, graceful termination: Pods are deleted in reverse order, from the highest to the lowest ordinal.
     ***(MySQL, PostgreSQL, MongoDB)
-
 5.Pods: Each pod in a StatefulSet has a unique identifier and hostname, and it is associated with a PersistentVolume.
 6.Headless Service: Unlike a regular service, a Headless Service is used for service discovery in StatefulSets. It provides direct access to pods without load balancing.
 7.PersistentVolumes (PVs) and PersistentVolumeClaims (PVCs): Each pod in a StatefulSet can have its own persistent storage that is preserved across restarts.
 
-**Persistent Storage:** Understand how Kubernetes manages and provisions persistent storage for applications with state.
+# Persistent Storage: 
+Understand how Kubernetes manages and provisions persistent storage for applications with state.
 By working through this project, you'll develop a deeper understanding of cloud-native application development, containerization, Kubernetes, and the various technologies involved in building and deploying modern web applications.
 Steps to Deploy
 
-**AWS RESOUCRES**
+AWS RESOUCRES
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 1.EKS (cluster-1)
 2.Role (MyAamzonEKSclusterRole)
@@ -76,13 +87,14 @@ Steps to Deploy
 }
 
   3.ADD-ONS in cluster
-  -> **Amazon EBS CSI Driver**
+  # --> Amazon EBS CSI Driver
   
   4.Compute in clusters 
-  -> **Nodes for Workers**
-    
+  
+  # Nodes for Workers
+  
      1.**Roles**
-
+     
     -->AmazonEBSCSIDriverPolicy
     -->AmazonEC2ContainerRegistryReadOnly
     -->AmazonEKS_CNI_Policy
@@ -93,12 +105,12 @@ Steps to Deploy
 
   5.EC2 Instances 
   
-  -->**coustmerMangaedRole**
+  # --> coustmerMangaedRole
    [polices.txt](https://github.com/user-attachments/files/17389752/polices.txt)
 
---->**EBSRole(AmazonEBSCSIDriverPolicy)**
+  # -->EBSRole(AmazonEBSCSIDriverPolicy)
 
-**Install Kubectl:**
+Install Kubectl:
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   ```bash
 curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.24.11/2023-03-17/bin/linux/amd64/kubectl
@@ -108,7 +120,7 @@ export PATH=/usr/local/bin:$PATH
 ```
 
 
-**Install AWScli:**
+Install AWScli:
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ```bash
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -116,7 +128,7 @@ unzip awscliv2.zip
 sudo ./aws/install
 ```
 
-**Once the Cluster is ready run the command to set context:**
+Once the Cluster is ready run the command to set context:
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ```bash
 aws eks update-kubeconfig --name EKS_CLUSTER_NAME --region us-west-2
@@ -167,7 +179,7 @@ kubectl get pv -n cloudchmap
  kubectl get pvc -n <namespace>
 ```
 
-**MONGO Database Setup**
+MONGO Database Setup
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 To create Mongo statefulset with Persistent volumes, run the command in manifests folder:
@@ -188,7 +200,7 @@ Command to check inside the Database
 ```bash
 kubectl exec -it mongo-0 -- mongo
 ```
-On the mongo-0 pod, initialise the Mongo database Replica set. In the terminal run the following command:
+On the mongo-0 pod, initialise the Mongo database Replica set. In the terminal run the following command
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ```bash
 cat << EOF | kubectl exec -it mongo-0 -- mongo
@@ -204,7 +216,7 @@ rs.reconfig(cfg, {force: true});
 sleep(5000);
 EOF
 ```
-Load the Data in the database by running this command:
+Load the Data in the database by running this command
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ```bash
 cat << EOF | kubectl exec -it mongo-0 -- mongo
@@ -219,6 +231,7 @@ EOF
 ```
 
 **MongoDB commands**
+
 ```bash 
 rs.status()
 ```
@@ -257,6 +270,7 @@ echo
 ```
 Test and confirm that the API route URL /languages, and /languages/{name} endpoints can be called successfully. In the terminal run any of the following commands:
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ```bash
 curl -s $API_ELB_PUBLIC_FQDN/languages | jq .
 curl -s $API_ELB_PUBLIC_FQDN/languages/go | jq .
@@ -314,12 +328,12 @@ Query the MongoDB database directly to observe the updated vote data. In the ter
 kubectl exec -it mongo-0 -- mongo langdb --eval "db.languages.find().pretty()"
 ```
 
-**Application Interface**
+Application Interface
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 <img width="593" alt="image" src="https://github.com/user-attachments/assets/2cf3eab2-431b-4300-82bd-cce1f2769cd8">
 
 
 
-**Summary**
+# Summary
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Deployed a cloud-native application on Amazon EKS, ensuring scalability and resilience. The application was accessed via a LoadBalancer's public IP, and your interactions generated data that was stored in a MongoDB ReplicaSet for high availability. You verified that the data was successfully captured and replicated across the MongoDB nodes. This project demonstrated the complete deployment, data persistence, and validation of a cloud-native architecture using EKS and MongoDB.
